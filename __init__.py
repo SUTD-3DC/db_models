@@ -12,7 +12,7 @@ db = SQLAlchemy()
 
 class Users(db.Model):
     __tablename__ = 'users'
-    user_id = db.Column(db.Interger, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(60), default='')
     password = db.Column(db.String(60), unique=True, default='')
     first_name = db.Column(db.String(20), default='')
@@ -50,12 +50,12 @@ class Users(db.Model):
 
 class Posts(db.Model):
     __tablename__ = 'posts'
-    post_id = db.Column(db.Interger, primary_key=True)
+    post_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), default='')
     content = db.Column(db.Text, default='')
     draft = db.Column(db.Text, default='')
     post_timestamp = db.Column(TIMESTAMP, default=datetime.datetime.utcnow().replace(microsecond=0))
-    view_num = db.Column(db.Interger, default=0)
+    view_num = db.Column(db.Integer, default=0)
 
     # Class Methods
     def create_tag(self, tag_title, description, tag_type):
@@ -65,26 +65,26 @@ class Posts(db.Model):
         db.session.commit()
 
     # Relationship
-    user_id = db.Column(db.Interger, db.ForeignKey('users.user_id', ondelete="CASCADE", onupdate='CASCADE'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id', ondelete="CASCADE", onupdate='CASCADE'))
 
 
 class Newsfeed(db.Model):
     __tablename__ = 'newsfeed'
-    newsfeed_id = db.Column(db.Interger, primary_key=True)
+    newsfeed_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), default='')
     content = db.Column(db.Text, default='')
     draft = db.Column(db.Text, default='')
     post_timestamp = db.Column(TIMESTAMP, default=datetime.datetime.utcnow().replace(microsecond=0))
-    view_num = db.Column(db.Interger, default=0)
+    view_num = db.Column(db.Integer, default=0)
     expiry_timestamp = db.Column(TIMESTAMP)
 
     # Relationship
-    user_id = db.Column(db.Interger, db.ForeignKey('users.user_id', ondelete="CASCADE", onupdate='CASCADE'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id', ondelete="CASCADE", onupdate='CASCADE'))
 
 
 class Tags(db.Model):
     __tablename__ = 'tags'
-    tag_id = db.Column(db.Interger, primary_key=True)
+    tag_id = db.Column(db.Integer, primary_key=True)
     tag_title = db.Column(db.String(255), default='')
     description = db.Column(db.Text, default='')
     tag_type = db.Column(SMALLINT(2), default=0)
@@ -93,5 +93,5 @@ class Tags(db.Model):
 class Post_Tag(db.Model):
     __tablename__ = 'post_tag'
     post_tag_id = db.Column(db.Integer, primary_key=True)
-    post_id = db.Column(db.Interger, db.ForeignKey('posts.post_id'))
-    tag_id = db.Column(db.Interger, db.ForeignKey('tags.tag_id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.post_id'))
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.tag_id'))
