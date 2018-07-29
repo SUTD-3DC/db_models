@@ -71,7 +71,7 @@ class Posts(db.Model):
 class Newsfeed(db.Model):
     __tablename__ = 'newsfeed'
     newsfeed_id = db.Column(db.Interger, primary_key=True)
-    title = db.Column(db.String(255), default='')x
+    title = db.Column(db.String(255), default='')
     content = db.Column(db.Text, default='')
     draft = db.Column(db.Text, default='')
     post_timestamp = db.Column(TIMESTAMP, default=datetime.datetime.utcnow().replace(microsecond=0))
