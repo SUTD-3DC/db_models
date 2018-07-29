@@ -18,7 +18,7 @@ class Users(db.Model):
     first_name = db.Column(db.String(20), default='')
     last_name = db.Column(db.String(20), default='')
     email = db.Column(db.String(60), unique=True, default='')
-    join_timestamp = db.Column(TIMESTAMP, default=datetime.datetime.utcnow().replace(microsecond=0))
+    join_timestamp = db.Column(TIMESTAMP, default=datetime.utcnow().replace(microsecond=0))
     is_admin = db.Column(BOOLEAN, default=False)
 
     # Class Methods
@@ -54,7 +54,7 @@ class Posts(db.Model):
     title = db.Column(db.String(255), default='')
     content = db.Column(db.Text, default='')
     draft = db.Column(db.Text, default='')
-    post_timestamp = db.Column(TIMESTAMP, default=datetime.datetime.utcnow().replace(microsecond=0))
+    post_timestamp = db.Column(TIMESTAMP, default=datetime.utcnow().replace(microsecond=0))
     view_num = db.Column(db.Integer, default=0)
 
     # Class Methods
@@ -74,7 +74,7 @@ class Newsfeed(db.Model):
     title = db.Column(db.String(255), default='')
     content = db.Column(db.Text, default='')
     draft = db.Column(db.Text, default='')
-    post_timestamp = db.Column(TIMESTAMP, default=datetime.datetime.utcnow().replace(microsecond=0))
+    post_timestamp = db.Column(TIMESTAMP, default=datetime.utcnow().replace(microsecond=0))
     view_num = db.Column(db.Integer, default=0)
     expiry_timestamp = db.Column(TIMESTAMP)
 
