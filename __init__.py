@@ -44,8 +44,8 @@ class Users(db.Model):
         return user
 
     # Relationship
-    posts = db.relationship('Posts' backref='post_author', passive_deletes=True, lazy='dynamic')
-    newsfeed = db.relationship('Newsfeed' backref='newsfeed_author', passive_deletes=True, lazy='dynamic')
+    posts = db.relationship('Posts', backref='post_author', passive_deletes=True, lazy='dynamic')
+    newsfeed = db.relationship('Newsfeed', backref='newsfeed_author', passive_deletes=True, lazy='dynamic')
 
 
 class Posts(db.Model):
